@@ -1,0 +1,5 @@
+package com.testyantra.assess;
+
+interface BMIcalc {
+
+}

@@ -1,0 +1,17 @@
+package com.testyantra.assess;
+
+import java.util.Scanner;
+
+public class BMI {
+
+	
+	public static void main(String[] args) {
+		
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter height ");
+		
+		
+		
+	}
+	
+}

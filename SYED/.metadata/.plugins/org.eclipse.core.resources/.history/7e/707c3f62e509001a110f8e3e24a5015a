@@ -1,0 +1,26 @@
+package com.testyantra.assess;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MFtop {
+
+	public static void main(String[] args) {
+		
+		List<Double> male=new ArrayList();
+		List<Double> female=new ArrayList();
+		
+		male.add(65.5);
+		male.add(35.5);
+		male.add(5.5);
+		male.add(75.5);
+		male.add(95.5);
+		female.add(65.5);
+		female.add(35.5);
+		female.add(5.5);
+		female.add(75.5);
+		female.add(95.5);
+		
+		
+	}
+}

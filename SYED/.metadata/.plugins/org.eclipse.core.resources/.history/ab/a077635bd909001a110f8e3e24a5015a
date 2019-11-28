@@ -1,0 +1,65 @@
+package com.testyantra.assess;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+public class Train {
+
+	public static void main(String[] args) {
+		
+		Map<Integer,String> m=new HashMap<Integer, String>();
+		
+		m.put(1 ,"Ananthapur Express");
+		m.put(2, "Tiger Express");
+		m.put(3, "Rajasthan Expresss");
+		
+		System.out.println(m.values());
+		
+		Function<Integer, String> in=i->{
+		
+			
+		for(Integer ii : m.keySet()) {
+			
+			if(ii==i) {
+				System.out.println(m.get(i));
+			}
+		}
+			
+			
+			
+			return null;
+			
+		};
+		
+		
+		
+
+		Function<String, String> ss=i->{
+		
+			
+		for(String ii : m.values()) {
+			
+			if(ii.equals(i)) {
+				System.out.println(m.get(i));
+			}
+		}
+			
+			
+			
+			return null;
+			
+		};
+		
+		
+		
+		
+		
+		
+
+	}
+	
+}

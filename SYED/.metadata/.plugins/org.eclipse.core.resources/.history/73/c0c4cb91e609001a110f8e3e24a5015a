@@ -1,0 +1,20 @@
+package com.testyantra.assess;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Fpass {
+
+	public static void main(String[] args) {
+		
+		List<Double> female=new ArrayList();
+		female.add(66.5);
+		female.add(36.5);
+		female.add(55.5);
+		female.add(79.5);
+		female.add(99.5);
+		
+		long fc=female.stream().filter(i->i>=35).count();
+	}
+
+}

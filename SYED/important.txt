@@ -1,0 +1,129 @@
+select */[distinct] column/EXp[alias]/ ==>> [ group by group execution/row by row ] {5/4}
+from tablaname  							{1}
+where [<filter condition>] execution is row by row //			{2}
+group by col_nm =>> execution is row by row //				{3/2} we can also use where then groupby then having 	if whereis not present then its ==>>2;
+having <Group filter condition >==>> group by group 			{4/3}
+Order by  col_nm =>> row by row 					{6/5} cause it doesn't know what have been selected to order them so after select [selecting only ] it will work so aftrer select
+Any class adfter group by is col by col 
+except one clause.
+
+//////////////////////////////////////////////////////////////////////----------------------------------------------
+
+function is a piece of code .
+2 types :
+1.single row;
+2.multi row ;
+
+===============================================================================================
+
+1.analyze ,process,execute for one input then checks for another input if there is one it will repaet;
+"No of outputs depends on no of inputs;"
+
+----------------------------------------------------------------------------------------
+
+
+2.multi row/group func/aggergate func:
+	
+	all inputs willl be combined together and then analyze ,process,execute and gives one output.
+	"Always only one output"  "only single input = sum(sal,comm)//error only  'sal' or 'comm' one at a time;"
+
+-------------------------------------------------------------------------------------------------------------------------
+count(comm)=4 ignores null;
+sum(comm)=2200 ignores null;
+avg(comm)=2200/4 and not 2200/14 
+
+max(ename) = " 'w%' here based on first character of name  "     works also min(ename)='a%' based on  firts char always
+  
+sum(ename) doesnt work;
+"cause confues to add column wise or row wise" 
+
+sum(sal,comm)//error
+sum(min(sal))//error nested group by func
+sum(sal),sal //error nothing should be present after mr func();
+"select sum(sal),max(sal),min(sal)  from emp "works ;
+
+-----------------------------------------------------------------------------------------------------------
+select dept,sum(sal) from emp group by dept;//works  
+cause one type of dept willb be one and sum9sal) aslo one row only so it will work
+/// agg func with another column and group by that column will work;
+agg fun(any column) with another(diff) column works
+
+
+-------------------------------------------------------------------------------------------------------
+
+	select max(sum(sal)) from emp group by deptno
+	// works it will sum sal with respect to diff groups and brings out max
+
+	select sum(sal) from emp group by deptno
+	works it will group by id and print 3 results
+
+		//
+	while using group by we cant use i.e select all only grouped ones can be printed
+
+	-------------------------------------------------------------------------------------------------
+	order by ename,sal // works it will sort first by name if some name repeats then it will sort acc to sal.[remember]
+
+============================================+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+	SUB QUERIES 
+	1.             SELECT ENAME FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC='NEW YORK')///////////////////////WORKS
+	2.		SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC='NEW YORK')////////////// WORKS
+	3. SUB QUERIES MUST BE ENCLOSED IN BRACKETS
+
+		//SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP WHERE J0B='SALESMAN' AND COUNT(
+
+//============================================ FOR KING AND JONES =====================================================================
+      11...	 SELECT ENAME FROM EMP WHERE EMPNO IN(SELECT MGR FROM EMP WHERE DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING','RESEARCH')) GROUP BY (MGR) HAVING COUNT(MGR)>=2)
+
+
+
+
+			12...select dname from dept where deptno in (select deptno from emp where ename in (select ename from emp where sal in(select sal from emp where sal between 2000 and 3000 ) and ename not like'S%'))
+/
+
+		13...select loc from dept where deptno in(select deptno from emp where ename in (select ename from emp where sal in(select min(sal) from emp where sal in (select sal from emp where sal>2000))))
+/
+  		15..SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP GROUP BY DEPTNO HAVING COUNT(DEPTNO)>4)
+
+///           
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+                                                       JOINS ------------------------------------------------------
+
+
+
+                               CROSS JOINS:
+
+				INNER JOINS:
+		SELECT DEPTNO FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO; //ERROR CONFUSION FROM WHERE TO TAKE DEPTNO {EMP / DEPT}
+		SELECT E.DEPTNO FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO  ///WORKS
+		SELECT D.DEPTNO FROM EMP E INNER JOIN DEPT D ON E.DEPTNO=D.DEPTNO   //WORKS
+
+
+		IMP  -- ONXC WE GIVES ALIAS {EMP E} THEN [E.ENAME] GIVES ERROR ONLY THIS WORKS [E.ENAME]
+
+
+
+
+                       OUTER JOINS:
+
+			1.LEFT JOIN
+			2.RIGHT JOIN
+			3.FULL JOIN
+
+			 SELF JOIN :
+
+			SELECT * FROM EMP E1 JOIN EMP E2 ON E1.EMPNO=E2.MGR
+		// IT COMPARES FROM RIGHT IT CHECKS FOR MGR IS ITS PRESENT THEN IT WILL TO EMPNO AND PRINTS /
+
+
+
+111  ..SELECT E.ENAME ,E.JOB,E.SAL*12 ANN_SAL,E.DEPTNO,D.DNAME FROM EMP E  INNER JOIN  DEPT D ON   E.DEPTNO=D.DEPTNO WHERE E.SAL>3000 AND E.JOB='CLERK'
+
+
+
+
+<<<<<  https://mccshreyas.wordpress.com/2018/01/07/how-to-fix-mysql-command-line-crashing-problem/    >>> sql crash problem 

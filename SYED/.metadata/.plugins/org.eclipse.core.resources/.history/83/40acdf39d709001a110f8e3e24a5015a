@@ -1,0 +1,16 @@
+package com.testyantra.assess;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+
+public class Colection {
+
+	public static void main(String[] args) {
+		
+		
+		
+
+	}
+	
+}

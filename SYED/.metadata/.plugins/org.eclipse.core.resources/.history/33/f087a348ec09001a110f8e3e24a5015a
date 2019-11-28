@@ -1,0 +1,15 @@
+package com.testyantra.assess;
+
+public class myzon {
+
+	double price;
+	String type;
+	public bezon(double price, String type) {
+		super();
+		this.price = price;
+		this.type = type;
+	}
+
+	
+	
+}

@@ -1,0 +1,9 @@
+package manthan.assessment.Implementation;
+
+import manthan.assessment.bean.Bean;
+
+public class Dao {
+	
+	public boolean AddMe(Bean b);
+
+}

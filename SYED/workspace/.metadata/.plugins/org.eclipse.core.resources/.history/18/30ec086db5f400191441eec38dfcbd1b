@@ -1,0 +1,19 @@
+package object;
+
+public class TestA {
+
+	public static void main(String[] args) {
+
+		Student s=new Student();
+		int i=s.hashCode();
+		System.out.println(i);
+		
+		String n=s.toString();
+		System.out.println(n);
+		//this returns fully qualified path name and hexadecimal values;
+		
+		Student ss=new Student("priya", 1, 78.6);
+		System.out.println(ss);
+	}
+
+}

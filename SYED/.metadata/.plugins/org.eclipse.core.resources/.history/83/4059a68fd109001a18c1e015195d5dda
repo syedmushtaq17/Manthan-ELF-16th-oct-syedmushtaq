@@ -1,0 +1,46 @@
+package com.testyantra.assess;
+
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public class TestChips {
+
+	public static void main(String[] args) {
+
+	
+		
+		Chips c=new Chips();
+		
+		
+		Function<Integer, Chips> a= cc->{
+			
+			int x=cc;
+			
+			switch (x) {
+			case 1:
+				return new Kurkure();
+			
+
+			case 2:
+				
+				
+				return new Lays();
+				
+			case 3:
+				
+				
+				return new Bingo();
+				
+		
+			}
+			
+			
+			
+			
+		};
+	
+		
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+package object;
+
+public class TestA {
+
+	public static void main(String[] args) {
+
+		Student s=new Student();
+		int i=s.hashCode();
+		System.out.println(i);
+	}
+
+}

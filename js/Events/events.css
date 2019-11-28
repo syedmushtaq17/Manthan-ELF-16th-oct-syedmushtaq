@@ -1,0 +1,6 @@
+body:hover{
+    transform: rotate(30deg);
+   transition: 30s;
+   transform: rotate(30deg);
+
+}

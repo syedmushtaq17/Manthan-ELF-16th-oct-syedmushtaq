@@ -1,0 +1,38 @@
+body{
+    background-image: url("/images/fog-4597268__340.jpg");
+    background-size: cover;
+}
+table,th,td{
+    /* border :1px;
+    border-collapse: collapse; */
+    /* box-shadow: 0 0 20px wheat;
+    border:solid black; */
+
+    padding: 10px;
+    font-family: cursive;
+    font-size: 20px;
+    border-radius: 25px;
+
+}
+table{
+    margin-left: 500px;
+    margin-top: 250px;
+    width: 500px;
+  
+}
+th{
+    background-color: rgba(0, 0, 255, 0.164);
+    color: white;
+}
+tr:nth-child(even){
+    background-color: turquoise;
+}
+/* for changing of color of rows */
+tr:nth-child(odd){
+ background-color: paleturquoise;
+}
+td:hover{
+    color: white;
+    background-color: gray;
+    cursor: pointer;
+}

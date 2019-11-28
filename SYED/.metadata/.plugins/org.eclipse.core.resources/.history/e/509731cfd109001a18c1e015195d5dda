@@ -1,0 +1,32 @@
+package com.testyantra.assess;
+
+public class Chips {
+
+	int opt=0;
+	 Chips check(int opt) {
+			
+			switch (opt) {
+			case 1:
+				return new Kurkure();
+			
+
+			case 2:
+				
+				
+				return new Lays();
+				
+			case 3:
+				
+				
+				return new Bingo();
+				
+				
+			default:
+				break;
+			}
+			return null;
+			
+				
+				
+		 }
+}

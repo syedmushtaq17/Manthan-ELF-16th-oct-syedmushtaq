@@ -1,0 +1,14 @@
+package com.testyantra.assess;
+
+public class myzon {
+
+	double price;
+	String type;
+	public myzon(double price, String type) {
+		this.price = price;
+		this.type = type;
+	}
+
+	
+	
+}

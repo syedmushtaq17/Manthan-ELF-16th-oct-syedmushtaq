@@ -1,0 +1,16 @@
+package com.testyantra.assess;
+
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public class TestChips {
+
+	public static void main(String[] args) {
+
+	
+	
+		
+		
+	}
+
+}

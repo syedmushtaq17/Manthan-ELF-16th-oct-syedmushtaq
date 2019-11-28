@@ -1,0 +1,14 @@
+package com.testyantra.assess;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MFtop {
+
+	public static void main(String[] args) {
+		
+		List<Double> male=new ArrayList<Chips>();
+		List<Double> female=new ArrayList<>();
+		
+	}
+}

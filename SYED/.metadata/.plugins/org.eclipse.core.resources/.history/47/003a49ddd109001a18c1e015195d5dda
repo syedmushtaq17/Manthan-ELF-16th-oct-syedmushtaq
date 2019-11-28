@@ -1,0 +1,8 @@
+package com.testyantra.assess;
+
+public class Lays extends Chips{
+
+	public Chips which() {
+		System.out.println("lays");
+	}
+}

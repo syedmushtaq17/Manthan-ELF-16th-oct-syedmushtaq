@@ -1,0 +1,830 @@
+select instr('banana','na',1) from dual;
+
+INSTR('BANANA','NA',1)                                                                              
+----------------------                                                                              
+                     3                                                                              
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select instr('banana','ab',1) from dual
+SQL> /
+
+INSTR('BANANA','AB',1)                                                                              
+----------------------                                                                              
+                     0                                                                              
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select instr('banana','na',1,2) from dual
+SQL> /
+
+INSTR('BANANA','NA',1,2)                                                                            
+------------------------                                                                            
+                       5                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select instr('banana','na',3,2) from dual
+SQL> /
+
+INSTR('BANANA','NA',3,2)                                                                            
+------------------------                                                                            
+                       5                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select instr('banana','na',3,1) from dual
+SQL> /
+
+INSTR('BANANA','NA',3,1)                                                                            
+------------------------                                                                            
+                       3                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select instr('banana','na',4,1) from dual
+SQL> /
+
+INSTR('BANANA','NA',4,1)                                                                            
+------------------------                                                                            
+                       5                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select instr('banana','na',4,2) from dual
+SQL> /
+
+INSTR('BANANA','NA',4,2)                                                                            
+------------------------                                                                            
+                       0                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select replace('banana','na','un') from dual
+SQL> /
+
+REPLAC                                                                                              
+------                                                                                              
+baunun                                                                                              
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select replace('bangalore','B','M') from dual
+SQL> /
+
+REPLACE('                                                                                           
+---------                                                                                           
+bangalore                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select replace('bangalore','b','M') from dual
+SQL> /
+
+REPLACE('                                                                                           
+---------                                                                                           
+Mangalore                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select replace('bangalore','b') from dual
+SQL> /
+
+REPLACE(                                                                                            
+--------                                                                                            
+angalore                                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select replace('bangalore','b',null) from dual
+SQL> /
+
+REPLACE(                                                                                            
+--------                                                                                            
+angalore                                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select replace('bangalore','b',nul) from dual
+SQL> /
+select replace('bangalore','b',nul) from dual
+                               *
+ERROR at line 1:
+ORA-00904: "NUL": invalid identifier 
+
+
+SQL> select concat(ename,sal) from emp;
+
+CONCAT(ENAME,SAL)                                                                                   
+--------------------------------------------------                                                  
+SMITH800                                                                                            
+ALLEN1600                                                                                           
+WARD1250                                                                                            
+JONES2975                                                                                           
+MARTIN1250                                                                                          
+BLAKE2850                                                                                           
+CLARK2450                                                                                           
+SCOTT3000                                                                                           
+KING5000                                                                                            
+TURNER1500                                                                                          
+ADAMS1100                                                                                           
+JAMES950                                                                                            
+FORD3000                                                                                            
+MILLER1300                                                                                          
+
+14 rows selected.
+
+SQL> select ename |'from'| sal from emp;
+select ename |'from'| sal from emp
+             *
+ERROR at line 1:
+ORA-00996: the concatenate operator is ||, not | 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename ||'from'|| sal from emp
+SQL> /
+
+ENAME||'FROM'||SAL                                                                                  
+------------------------------------------------------                                              
+SMITHfrom800                                                                                        
+ALLENfrom1600                                                                                       
+WARDfrom1250                                                                                        
+JONESfrom2975                                                                                       
+MARTINfrom1250                                                                                      
+BLAKEfrom2850                                                                                       
+CLARKfrom2450                                                                                       
+SCOTTfrom3000                                                                                       
+KINGfrom5000                                                                                        
+TURNERfrom1500                                                                                      
+ADAMSfrom1100                                                                                       
+JAMESfrom950                                                                                        
+FORDfrom3000                                                                                        
+MILLERfrom1300                                                                                      
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select concat(ename,concat(' ',sal)) from emp
+SQL> /
+
+CONCAT(ENAME,CONCAT('',SAL))                                                                        
+---------------------------------------------------                                                 
+SMITH 800                                                                                           
+ALLEN 1600                                                                                          
+WARD 1250                                                                                           
+JONES 2975                                                                                          
+MARTIN 1250                                                                                         
+BLAKE 2850                                                                                          
+CLARK 2450                                                                                          
+SCOTT 3000                                                                                          
+KING 5000                                                                                           
+TURNER 1500                                                                                         
+ADAMS 1100                                                                                          
+JAMES 950                                                                                           
+FORD 3000                                                                                           
+MILLER 1300                                                                                         
+
+14 rows selected.
+
+SQL> select trim(leading 't' from ttttttttttttttttttsqltttttttttttttttt) from dual;
+select trim(leading 't' from ttttttttttttttttttsqltttttttttttttttt) from dual
+                             *
+ERROR at line 1:
+ORA-00972: identifier is too long 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select trim(leading 't' from 'ttttttttttttttttttsqltttttttttttttttt') from dual
+SQL> /
+
+TRIM(LEADING'T'FROM                                                                                 
+-------------------                                                                                 
+sqltttttttttttttttt                                                                                 
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select trim(trailing 't' from 'ttttttttttttttttttsqltttttttttttttttt') from dual
+SQL> /
+
+TRIM(TRAILING'T'FROM'                                                                               
+---------------------                                                                               
+ttttttttttttttttttsql                                                                               
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select trim(both 't' from 'ttttttttttttttttttsqltttttttttttttttt') from dual
+SQL> /
+
+TRI                                                                                                 
+---                                                                                                 
+sql                                                                                                 
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select trim(both 'l' from 'ttttttttttttttttttsqltttttttttttttttt') from dual
+SQL> /
+
+TRIM(BOTH'L'FROM'TTTTTTTTTTTTTTTTTTSQ                                                               
+-------------------------------------                                                               
+ttttttttttttttttttsqltttttttttttttttt                                                               
+
+SQL> select sysdate from dual
+  2  ;
+
+SYSDATE                                                                                             
+---------                                                                                           
+14-NOV-19                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select systimestamp from dual
+  2  /
+
+SYSTIMESTAMP                                                                                        
+---------------------------------------------------------------------------                         
+14-NOV-19 10.44.01.033000 AM +05:30                                                                 
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select systimestamp from dual
+SQL> /
+
+SYSTIMESTAMP                                                                                        
+---------------------------------------------------------------------------                         
+14-NOV-19 10.45.00.513000 AM +05:30                                                                 
+
+SQL> /
+
+SYSTIMESTAMP                                                                                        
+---------------------------------------------------------------------------                         
+14-NOV-19 10.45.03.153000 AM +05:30                                                                 
+
+SQL> 
+SQL> /
+
+SYSTIMESTAMP                                                                                        
+---------------------------------------------------------------------------                         
+14-NOV-19 10.45.07.278000 AM +05:30                                                                 
+
+SQL> select add_months(sysdate,3) from dual;
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+14-FEB-20                                                                                           
+
+SQL> /
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+14-FEB-20                                                                                           
+
+SQL> /
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+14-FEB-20                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months(sysdate,1) from dual
+SQL> /
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+14-DEC-19                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months(30-NOV-2019,1) from dual
+SQL> /
+select add_months(30-NOV-2019,1) from dual
+                     *
+ERROR at line 1:
+ORA-00904: "NOV": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months(30-11-2019,3) from dual
+SQL> /
+select add_months(30-11-2019,3) from dual
+                       *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected DATE got NUMBER 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months("30-11-2019",3) from dual
+SQL> /
+select add_months("30-11-2019",3) from dual
+                  *
+ERROR at line 1:
+ORA-00904: "30-11-2019": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months("30-NOV-2019",3) from dual
+SQL> /
+select add_months("30-NOV-2019",3) from dual
+                  *
+ERROR at line 1:
+ORA-00904: "30-NOV-2019": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months('30-NOV-2019',3) from dual
+SQL> /
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+29-FEB-20                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months('31-NOV-2019',3) from dual
+SQL> /
+select add_months('31-NOV-2019',3) from dual
+                  *
+ERROR at line 1:
+ORA-01830: date format picture ends before converting entire input string 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months('31-NOV-2019',-3) from dual
+SQL> /
+select add_months('31-NOV-2019',-3) from dual
+                  *
+ERROR at line 1:
+ORA-01830: date format picture ends before converting entire input string 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months('31-DEC-2019',2) from dual
+SQL> /
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+29-FEB-20                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select add_months('30-DEC-2019',2) from dual
+SQL> /
+
+ADD_MONTH                                                                                           
+---------                                                                                           
+29-FEB-20                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select months_between('30-DEC-2019','30-mar-2020') from dual
+SQL> /
+
+MONTHS_BETWEEN('30-DEC-2019','30-MAR-2020')                                                         
+-------------------------------------------                                                         
+                                         -3                                                         
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select last_day('30-DEC-2019') from dual
+SQL> /
+
+LAST_DAY(                                                                                           
+---------                                                                                           
+31-DEC-19                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select last_day('30-jul-2019') from dual
+SQL> /
+
+LAST_DAY(                                                                                           
+---------                                                                                           
+31-JUL-19                                                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract(year,'30-jul-2019') from dual
+SQL> /
+select extract(year,'30-jul-2019') from dual
+               *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract('year','30-jul-2019') from dual
+SQL> /
+select extract('year','30-jul-2019') from dual
+       *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected - got - 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract("YEAR",'30-jul-2019') from dual
+SQL> /
+select extract("YEAR",'30-jul-2019') from dual
+               *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract(YEAR,'30-jul-2019') from dual
+SQL> /
+select extract(YEAR,'30-jul-2019') from dual
+               *
+ERROR at line 1:
+ORA-00904: "YEAR": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract('YEAR','30-jul-2019') from dual
+SQL> /
+select extract('YEAR','30-jul-2019') from dual
+       *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected - got - 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract(MON from '30-jul-2019') from dual
+SQL> /
+select extract(MON from '30-jul-2019') from dual
+                   *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract(MON from to_date( '30-jul-2019')) from dual
+SQL> /
+select extract(MON from to_date( '30-jul-2019')) from dual
+                   *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select extract(MONTH from to_date( '30-jul-2019')) from dual
+SQL> /
+
+EXTRACT(MONTHFROMTO_DATE('30-JUL-2019'))                                                            
+----------------------------------------                                                            
+                                       7                                                            
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select extract(YEAR from to_date( '30-jul-2019')) from dual
+SQL> /
+
+EXTRACT(YEARFROMTO_DATE('30-JUL-2019'))                                                             
+---------------------------------------                                                             
+                                   2019                                                             
+
+SQL> SELECT MOD(6,2) FROM DUAL;
+
+  MOD(6,2)                                                                                          
+----------                                                                                          
+         0                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT 15/2 FROM DUAL
+SQL> /
+
+      15/2                                                                                          
+----------                                                                                          
+       7.5                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT (NUMBER)15/2 FROM DUAL
+SQL> /
+SELECT (NUMBER)15/2 FROM DUAL
+        *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT (ROUND(15/2)) FROM DUAL
+SQL> /
+
+(ROUND(15/2))                                                                                       
+-------------                                                                                       
+            8                                                                                       
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT (FLOOR(15/2)) FROM DUAL
+SQL> /
+
+(FLOOR(15/2))                                                                                       
+-------------                                                                                       
+            7                                                                                       
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT (POWER(15,2)) FROM DUAL
+SQL> /
+
+(POWER(15,2))                                                                                       
+-------------                                                                                       
+          225                                                                                       
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT (SQRT(15)) FROM DUAL
+SQL> /
+
+(SQRT(15))                                                                                          
+----------                                                                                          
+3.87298335                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE NAME LIKE'____'
+SQL> /
+SELECT ENAME FROM EMP WHERE NAME LIKE'____'
+                            *
+ERROR at line 1:
+ORA-00904: "NAME": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE ENAME LIKE'____'
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+WARD                                                                                                
+KING                                                                                                
+FORD                                                                                                
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE LENGTH(ENAME===7) 
+SQL> /
+SELECT ENAME FROM EMP WHERE LENGTH(ENAME===7) 
+                                        *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE (LENGTH(ENAME===7)) 
+SQL> /
+SELECT ENAME FROM EMP WHERE (LENGTH(ENAME===7)) 
+                                         *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE (LENGTH(ENAME==7)) 
+SQL> /
+SELECT ENAME FROM EMP WHERE (LENGTH(ENAME==7)) 
+                                         *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT SAL FROM EMP ORDER BY SAL DESC LIMIT 3;
+SELECT SAL FROM EMP ORDER BY SAL DESC LIMIT 3
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* SELECT SAL FROM EMP ORDER BY SAL DESC LIMIT by 3
+SQL> /
+SELECT SAL FROM EMP ORDER BY SAL DESC LIMIT by 3
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* SELECT SAL FROM EMP ORDER BY SAL DESC LIMIT 3 
+SQL> /
+SELECT SAL FROM EMP ORDER BY SAL DESC LIMIT 3 
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<fmax)
+  4* select sm from smax
+SQL> /
+     smax as(select max(sal) sm from distsal where sal<fmax)
+                                                       *
+ERROR at line 3:
+ORA-00904: "FMAX": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<fmax)/
+  4* select sm from smax
+SQL> /
+     smax as(select max(sal) sm from distsal where sal<fmax)/
+                                                            *
+ERROR at line 3:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<(select * from max)/
+  4* select sm from smax
+SQL> /
+select sm from smax
+*
+ERROR at line 4:
+ORA-00936: missing expression 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<(select * from max))/
+  4* select sm from smax
+SQL> /
+     smax as(select max(sal) sm from distsal where sal<(select * from max))/
+                                                                           *
+ERROR at line 3:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<(select * from max))
+  4* select sm from smax
+  5  /
+     smax as(select max(sal) sm from distsal where sal<(select * from max))
+                                                                      *
+ERROR at line 3:
+ORA-00942: table or view does not exist 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<(select * from fmax))
+  4* select sm from smax
+SQL> /
+
+        SM                                                                                          
+----------                                                                                          
+      3000                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<(select * from fmax)),
+  4       tmax as(select max(sal) tm from distsal where sal<(select * from smax))
+  5* select sm from tmax
+SQL> /
+select sm from tmax
+       *
+ERROR at line 5:
+ORA-00904: "SM": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1  with distsal as(select distinct sal from emp),
+  2  	fmax as(select max(sal) fm from distsal),
+  3       smax as(select max(sal) sm from distsal where sal<(select * from fmax)),
+  4       tmax as(select max(sal) tm from distsal where sal<(select * from smax))
+  5* select tm from tmax
+SQL> /
+
+        TM                                                                                          
+----------                                                                                          
+      2975                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal from emp order by sal desc FETCH FIRST 5 ROWS WITH TIES
+SQL> /
+select sal from emp order by sal desc FETCH FIRST 5 ROWS WITH TIES
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal from emp order by sal desc FETCH FIRST 5 ROWS only
+SQL> /
+select sal from emp order by sal desc FETCH FIRST 5 ROWS only
+                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> spool off;

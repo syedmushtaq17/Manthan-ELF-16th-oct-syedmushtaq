@@ -1,0 +1,40 @@
+package com.testyantra.assess;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+
+public class Colection {
+
+	public static void main(String[] args) {
+		
+		
+		ArrayList<String> al= ["this","is","Arraylist"];
+		
+		Function<Integer, List> a=l->{
+			
+int x=cc;
+			
+			switch (x) {
+			case 1:
+				return ;
+			
+
+			case 2:
+				
+				
+				return ;
+				
+			case 3:
+				
+				
+				return ;
+				
+		
+			}
+			return null;
+			
+		};
+	}
+	
+}

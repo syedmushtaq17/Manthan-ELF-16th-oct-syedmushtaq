@@ -1,0 +1,58 @@
+package com.testyantra.assess;
+
+import java.util.Scanner;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public class TestChips {
+
+	public static void main(String[] args) {
+
+	Scanner scan=new Scanner(System.in);
+		
+		Chips c=new Chips();
+		
+		
+		Function<Integer, Chips> a= cc->{
+			
+			int x=cc;
+			
+			switch (x) {
+			case 1:
+				return new Kurkure();
+			
+
+			case 2:
+				
+				
+				return new Lays();
+				
+			case 3:
+				
+				
+				return new Bingo();
+				
+		
+			}
+			return null;
+			
+			
+			
+			
+		};
+		
+		System.out.println("Enter the option");
+		System.out.println("1 for Kurkure");
+		System.out.println("2 for Lays");
+		System.out.println("3 for Bingo");
+		
+		Integer y= scan.nextInt();
+		Chips f=a.apply(y);
+		f.which();
+	
+	
+	
+		
+	}
+
+}

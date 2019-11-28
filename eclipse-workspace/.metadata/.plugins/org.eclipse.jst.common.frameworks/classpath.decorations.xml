@@ -1,0 +1,7 @@
+<classpath>
+  <container id="empwebapp!org.eclipse.jst.j2ee.internal.web.container">
+    <entry id="C:/Users/CBT/eclipse-workspace/empwebapp/WebContent/WEB-INF/lib/javax.servlet-api-3.1.0.jar">
+      <source-attachment-path>/empwebapp/WebContent/WEB-INF/lib/javax.servlet-api-3.1.0.jar</source-attachment-path>
+    </entry>
+  </container>
+</classpath>

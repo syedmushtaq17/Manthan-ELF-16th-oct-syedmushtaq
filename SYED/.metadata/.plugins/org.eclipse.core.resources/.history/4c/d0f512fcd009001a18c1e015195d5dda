@@ -1,0 +1,29 @@
+package com.testyantra.assess;
+
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public class TestChips {
+
+	public static void main(String[] args) {
+
+		int opt=0;
+	 Chips check(opt) {
+			
+		switch (opt) {
+		case 1:
+			
+			break;
+
+		default:
+			break;
+		}
+			
+			
+			
+	 }
+		
+		
+	}
+
+}

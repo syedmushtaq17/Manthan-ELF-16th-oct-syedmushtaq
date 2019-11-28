@@ -1,0 +1,106 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.manthan.empwebapp.beans.EmployeeInfoBean"%>
+<%@page import="com.manthan.empwebapp.dao.EmployeeDAOimpl"%>
+<%@page import="com.manthan.empwebapp.dao.EmployeeDAO"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <% EmployeeDAO dao=new EmployeeDAOimpl();
+       EmployeeInfoBean employeeInfoBean=new EmployeeInfoBean();
+       
+       
+       
+       
+       
+    %>
+    
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<table>
+
+
+
+<tr>
+<th>Employee_id   </th>
+
+<th>Employee_name	</th>
+<th> Age</th>
+<th>Salary</th>
+<th>Designation</th>
+<th>Mobile</th>
+</tr>
+
+
+	<%  
+	 ResultSet r=  dao.seeAllEmployee();
+	while(r.next()){ %>
+
+<td>
+<%= r.getInt("emp_id") %>
+</td>
+
+<td>
+<%= r.getString("emp_name") %>
+</td>
+<td>
+<%=  r.getInt("age")%>
+</td>
+<td>
+<%= r.getDouble("salary") %>
+</td>
+<td>
+<%=  r.getString("designation") %>
+</td>
+<td>
+<%= r.getLong("mobile") %>
+</td> 
+</tr>
+<%} %>
+
+
+
+   <%     
+
+finally {
+	if(rs!=null) {
+		try {
+			rs.close();
+	} catch (SQLException e) {
+e.printStackTrace();
+		}
+	}
+	if(stmt!=null) {
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	if(con!=null) {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+}
+}
+}
+
+
+
+   %>
+
+
+</table>
+
+
+
+</body>
+</html>

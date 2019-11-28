@@ -1,0 +1,141 @@
+SQL> SELECT 10*20 FROM DUAL;
+
+     10*20                                                                                          
+----------                                                                                          
+       200                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT 10%20 FROM DUAL
+SQL> /
+SELECT 10%20 FROM DUAL
+         *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT 10/20 FROM DUAL
+SQL> /
+
+     10/20                                                                                          
+----------                                                                                          
+        .5                                                                                          
+
+SQL>  SELECT 10*20 FROM DUAL;
+
+     10*20                                                                                          
+----------                                                                                          
+       200                                                                                          
+
+SQL> SELECT 10+30 AS SUM FROM DUAL;
+
+       SUM                                                                                          
+----------                                                                                          
+        40                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT 10+30 AS SUM OF NUM FROM DUAL
+SQL> /
+SELECT 10+30 AS SUM OF NUM FROM DUAL
+                    *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT 10+30 AS SUM_OF_NUM FROM DUAL
+SQL> /
+
+SUM_OF_NUM                                                                                          
+----------                                                                                          
+        40                                                                                          
+
+SQL>  ED
+Wrote file afiedt.buf
+
+  1* SELECT 10+30 AS "SUM_OF_NUM" FROM DUAL
+SQL> /
+
+SUM_OF_NUM                                                                                          
+----------                                                                                          
+        40                                                                                          
+
+SQL> CL SCR
+SQL> SELECT SAL FROM EMP;
+
+       SAL                                                                                          
+----------                                                                                          
+       800                                                                                          
+      1600                                                                                          
+      1250                                                                                          
+      2975                                                                                          
+      1250                                                                                          
+      2850                                                                                          
+      2450                                                                                          
+      3000                                                                                          
+      5000                                                                                          
+      1500                                                                                          
+      1100                                                                                          
+       950                                                                                          
+      3000                                                                                          
+      1300                                                                                          
+
+14 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DISTINCT(SAL) FROM EMP
+SQL> RUN
+  1* SELECT DISTINCT(SAL) FROM EMP
+
+       SAL                                                                                          
+----------                                                                                          
+      2450                                                                                          
+      5000                                                                                          
+      1300                                                                                          
+      1250                                                                                          
+      2850                                                                                          
+      2975                                                                                          
+      1100                                                                                          
+      3000                                                                                          
+       800                                                                                          
+      1600                                                                                          
+      1500                                                                                          
+       950                                                                                          
+
+12 rows selected.
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DISTINCT(EMPID) FROM EMP
+SQL> /
+SELECT DISTINCT(EMPID) FROM EMP
+                *
+ERROR at line 1:
+ORA-00904: "EMPID": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DISTINCT(DEPTNO) FROM DEPT
+SQL> /
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        10                                                                                          
+        20                                                                                          
+        30                                                                                          
+        40                                                                                          
+
+SQL> SPOOL OFF

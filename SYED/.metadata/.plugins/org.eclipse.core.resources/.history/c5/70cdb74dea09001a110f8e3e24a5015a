@@ -1,0 +1,29 @@
+package com.testyantra.assess;
+
+import java.util.Scanner;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public class BMI {
+
+	
+	public static void main(String[] args) {
+		
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter height ");
+		Integer h=scan.nextInt();
+		
+		System.out.println("Enter weight ");
+		Integer w=scan.nextInt();
+		
+		BMIcalc  c=(hh,ww)-> hh/(ww*ww);
+		
+		System.out.println("BMI is "+c.cal(h, w);
+		
+		
+		
+		
+		
+	}
+	
+}

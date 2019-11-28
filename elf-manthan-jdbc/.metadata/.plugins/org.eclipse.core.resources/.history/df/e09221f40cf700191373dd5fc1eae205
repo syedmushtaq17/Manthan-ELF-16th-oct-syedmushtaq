@@ -1,0 +1,10 @@
+package com.manthanemployeemanagement.jdbc;
+
+public class MYFIRSTJDBC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

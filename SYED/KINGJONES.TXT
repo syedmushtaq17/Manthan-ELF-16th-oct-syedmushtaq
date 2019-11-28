@@ -1,0 +1,23 @@
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE EMPNO IN(SELECT MGR FROM EMP WHERE DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING','RESEARCH')) GROUP BY (MGR) HAVING COUNT(MGR)>=2)
+SQL> /
+
+ENAME                                                                           
+----------                                                                      
+KING                                                                            
+JONES                                                                           
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE EMPNO IN(SELECT MGR FROM EMP WHERE DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING','RESEARCH')) GROUP BY (MGR) HAVING COUNT(MGR)>=2)
+SQL> SELECT ENAME FROM EMP WHERE EMPNO IN(SELECT MGR FROM EMP WHERE DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING','RESEARCH')) GROUP BY (MGR) HAVING COUNT(MGR)>=2);
+
+ENAME                                                                           
+----------                                                                      
+KING                                                                            
+JONES                                                                           
+
+SQL> SPOOL OFF

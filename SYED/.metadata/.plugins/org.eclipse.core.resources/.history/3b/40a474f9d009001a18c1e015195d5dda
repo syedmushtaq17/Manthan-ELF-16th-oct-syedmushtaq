@@ -1,0 +1,30 @@
+package com.testyantra.assess;
+
+public class Chips {
+
+	int opt=0;
+	 Chips check(opt) {
+			
+			switch (opt) {
+			case 1:
+				
+				break;
+
+			case 2:
+				
+				break;
+				
+			case 3:
+				
+				
+				break;
+				
+				
+			default:
+				break;
+			}
+				
+				
+				
+		 }
+}

@@ -1,0 +1,47 @@
+form{
+
+border: 1px solid black;
+color: white;
+width: 300px;
+height: 300px;
+text-align: center;
+margin-left: 1000px;
+margin-top: 250px;
+border-radius: 25px;
+
+background-image: url("/images/lake-4595401__340.png");
+font-size: 22px;
+font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+box-shadow: 30px 30px 40px rgb(255, 166, 0);
+}
+body{
+
+    background-image: url("/images/blood-orange-4582809__340.jpg");
+    background-size: cover;
+}
+
+input[type="text"],input[type="password"]  {
+
+    width: 200px;
+    height: 22px;
+    border: 1px solid paleturquoise;
+   text-align: center;
+    border-radius: 5px;
+    outline: none;
+}
+input[type="submit"]{
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 2px solid rgba(255, 166, 0, 0.301);
+
+}
+input[type="submit"]:hover{
+   background-color: rgba(0, 234, 255, 0.459);
+   /* this is for background of submit text */
+   color: blue;
+   /* this is for submit text */
+   cursor: pointer;
+   /* this is for cursor to be handtype  */
+}

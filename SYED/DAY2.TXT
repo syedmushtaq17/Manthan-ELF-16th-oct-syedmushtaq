@@ -1,0 +1,1149 @@
+SQL> select max(sum(sal)) from emp group by deptno;
+
+MAX(SUM(SAL))                                                                   
+-------------                                                                   
+        10875                                                                   
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sum(sal) from emp group by deptno
+SQL> /
+
+  SUM(SAL)                                                                      
+----------                                                                      
+      9400                                                                      
+     10875                                                                      
+      8750                                                                      
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sum(sal),deptno from emp group by deptno
+SQL> /
+
+  SUM(SAL)     DEPTNO                                                           
+---------- ----------                                                           
+      9400         30                                                           
+     10875         20                                                           
+      8750         10                                                           
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select max(sum(sal)),deptno from emp group by deptno
+SQL> /
+select max(sum(sal)),deptno from emp group by deptno
+                     *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> select * from emp group by deptno having count(deptno) >3;
+select * from emp group by deptno having count(deptno) >3
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select deptno from emp group by deptno having count(deptno) >3
+SQL> /
+
+    DEPTNO                                                                      
+----------                                                                      
+        30                                                                      
+        20                                                                      
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select deptno from emp group by deptno having count(*) >3
+SQL> /
+
+    DEPTNO                                                                      
+----------                                                                      
+        30                                                                      
+        20                                                                      
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select deptno from emp where count(*) >3 group by deptno ;
+SQL> /
+select deptno from emp where count(*) >3 group by deptno ;
+                             *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> select ename,sal from emp
+  2  ;
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+ALLEN            1600                                                           
+WARD             1250                                                           
+JONES            2975                                                           
+MARTIN           1250                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+SCOTT            3000                                                           
+KING             5000                                                           
+TURNER           1500                                                           
+ADAMS            1100                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+JAMES             950                                                           
+FORD             3000                                                           
+MILLER           1300                                                           
+
+14 rows selected.
+
+SQL> ;
+  1  select ename,sal from emp
+  2* 
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename,sal from emp order by ename,sal
+  2  
+SQL> /
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+ADAMS            1100                                                           
+ALLEN            1600                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+FORD             3000                                                           
+JAMES             950                                                           
+JONES            2975                                                           
+KING             5000                                                           
+MARTIN           1250                                                           
+MILLER           1300                                                           
+SCOTT            3000                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+TURNER           1500                                                           
+WARD             1250                                                           
+
+14 rows selected.
+
+SQL> set pages 100 lines 100
+SQL> ;
+  1* select ename,sal from emp order by ename,sal
+SQL> /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+ADAMS            1100                                                                               
+ALLEN            1600                                                                               
+BLAKE            2850                                                                               
+CLARK            2450                                                                               
+FORD             3000                                                                               
+JAMES             950                                                                               
+JONES            2975                                                                               
+KING             5000                                                                               
+MARTIN           1250                                                                               
+MILLER           1300                                                                               
+SCOTT            3000                                                                               
+SMITH             800                                                                               
+TURNER           1500                                                                               
+WARD             1250                                                                               
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename,sal from emp order by sal
+SQL> /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+SMITH             800                                                                               
+JAMES             950                                                                               
+ADAMS            1100                                                                               
+WARD             1250                                                                               
+MARTIN           1250                                                                               
+MILLER           1300                                                                               
+TURNER           1500                                                                               
+ALLEN            1600                                                                               
+CLARK            2450                                                                               
+BLAKE            2850                                                                               
+JONES            2975                                                                               
+SCOTT            3000                                                                               
+FORD             3000                                                                               
+KING             5000                                                                               
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select ename,sal from emp order by sal,ename
+SQL> /
+
+ENAME             SAL                                                                               
+---------- ----------                                                                               
+SMITH             800                                                                               
+JAMES             950                                                                               
+ADAMS            1100                                                                               
+MARTIN           1250                                                                               
+WARD             1250                                                                               
+MILLER           1300                                                                               
+TURNER           1500                                                                               
+ALLEN            1600                                                                               
+CLARK            2450                                                                               
+BLAKE            2850                                                                               
+JONES            2975                                                                               
+FORD             3000                                                                               
+SCOTT            3000                                                                               
+KING             5000                                                                               
+
+14 rows selected.
+
+SQL> select sum(sal) ,job from emp group by job;
+
+  SUM(SAL) JOB                                                                                      
+---------- ---------                                                                                
+      4150 CLERK                                                                                    
+      5600 SALESMAN                                                                                 
+      5000 PRESIDENT                                                                                
+      8275 MANAGER                                                                                  
+      6000 ANALYST                                                                                  
+
+SQL> select hiredate from emp group by hiredate having count(hiredate)>3;
+
+no rows selected
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from emp
+SQL> select hiredate from emp group by hiredate having count(hiredate)>1;
+
+HIREDATE                                                                                            
+---------                                                                                           
+03-DEC-81                                                                                           
+
+SQL> select deptno from emp group by deptno having sum(sal)>9000 and count(deptno)>2;
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        30                                                                                          
+        20                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select deptno from emp group by deptno having sum(sal)>8000 and count(deptno)>2
+SQL> /
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        30                                                                                          
+        20                                                                                          
+        10                                                                                          
+
+SQL> select count(deptno),deptno ,avg(sal) where sal >comm group by deptno;
+select count(deptno),deptno ,avg(sal) where sal >comm group by deptno
+                                      *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select count(deptno),deptno ,avg(sal) from emp where sal >comm group by deptno
+SQL> /
+
+COUNT(DEPTNO)     DEPTNO   AVG(SAL)                                                                 
+------------- ---------- ----------                                                                 
+            3         30       1450                                                                 
+
+SQL> select deptno from emp group by deptno;
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        30                                                                                          
+        20                                                                                          
+        10                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select deptno,count(deptno) from emp group by deptno
+SQL> /
+
+    DEPTNO COUNT(DEPTNO)                                                                            
+---------- -------------                                                                            
+        30             6                                                                            
+        20             5                                                                            
+        10             3                                                                            
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select deptno ,count(deptno) ,avg(sal) from emp where sal >comm group by deptno
+SQL> /
+
+    DEPTNO COUNT(DEPTNO)   AVG(SAL)                                                                 
+---------- ------------- ----------                                                                 
+        30             3       1450                                                                 
+
+SQL> select avg(sal) from emp ;
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+2073.21429                                                                                          
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> select avg(sal) from emp group by deptno;
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+1566.66667                                                                                          
+      2175                                                                                          
+2916.66667                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select avg(sal),deptno from emp group by deptno
+SQL> /
+
+  AVG(SAL)     DEPTNO                                                                               
+---------- ----------                                                                               
+1566.66667         30                                                                               
+      2175         20                                                                               
+2916.66667         10                                                                               
+
+SQL> select avg(sal) from emp where deptno=30;
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+1566.66667                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select avg(sal) from emp where deptno=30 and sal>comm;
+  2  /
+select avg(sal) from emp where deptno=30 and sal>comm;
+                                                     *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select avg(sal) from emp where deptno=30 and sal>comm
+SQL> /
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+      1450                                                                                          
+
+SQL> select sum(sal) from emp where deptno=30;
+
+  SUM(SAL)                                                                                          
+----------                                                                                          
+      9400                                                                                          
+
+SQL> select sum(sal) from emp where deptno=30 and sal>comm;
+
+  SUM(SAL)                                                                                          
+----------                                                                                          
+      4350                                                                                          
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal,deptno from emp where deptno=30 and sal>comm
+SQL> /
+
+       SAL     DEPTNO                                                                               
+---------- ----------                                                                               
+      1600         30                                                                               
+      1250         30                                                                               
+      1500         30                                                                               
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> select sum(sal) from emp where deptno=30 and sal-comm>0;
+
+  SUM(SAL)                                                                                          
+----------                                                                                          
+      4350                                                                                          
+
+SQL> select comm-sal from emp;
+
+  COMM-SAL                                                                                          
+----------                                                                                          
+                                                                                                    
+     -1300                                                                                          
+      -750                                                                                          
+                                                                                                    
+       150                                                                                          
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+     -1500                                                                                          
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+
+14 rows selected.
+
+SQL> select isnull(comm,0) from emp;
+select isnull(comm,0) from emp
+       *
+ERROR at line 1:
+ORA-00904: "ISNULL": invalid identifier 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select null(comm,0) from emp
+SQL> /
+select null(comm,0) from emp
+           *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select NVL(comm,0) from emp;
+
+NVL(COMM,0)                                                                                         
+-----------                                                                                         
+          0                                                                                         
+        300                                                                                         
+        500                                                                                         
+          0                                                                                         
+       1400                                                                                         
+          0                                                                                         
+          0                                                                                         
+          0                                                                                         
+          0                                                                                         
+          0                                                                                         
+          0                                                                                         
+          0                                                                                         
+          0                                                                                         
+          0                                                                                         
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal,deptno from emp where deptno=30 and sal>NVL(comm<0)
+SQL> /
+select sal,deptno from emp where deptno=30 and sal>NVL(comm<0)
+                                                   *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select sal,deptno from emp where deptno=30 and sal>NVL(comm,0)
+SQL> /
+
+       SAL     DEPTNO                                                                               
+---------- ----------                                                                               
+      1600         30                                                                               
+      1250         30                                                                               
+      2850         30                                                                               
+      1500         30                                                                               
+       950         30                                                                               
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select avg(sal),deptno from emp where deptno=30 and sal>NVL(comm,0)
+SQL> /
+select avg(sal),deptno from emp where deptno=30 and sal>NVL(comm,0)
+                *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select avg(sal) from emp where deptno=30 and sal>NVL(comm,0)
+SQL> /
+
+  AVG(SAL)                                                                                          
+----------                                                                                          
+      1630                                                                                          
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select * from emp
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select  deptno, count(deptno),avg(sal) where sal>NVL(comm,0) from emp group by deptno
+SQL> /
+select  deptno, count(deptno),avg(sal) where sal>NVL(comm,0) from emp group by deptno
+                                       *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ed
+Wrote file afiedt.buf
+
+  1* select  deptno, count(deptno),avg(sal) from emp where sal>NVL(comm,0)  group by deptno
+SQL> /
+
+    DEPTNO COUNT(DEPTNO)   AVG(SAL)                                                                 
+---------- ------------- ----------                                                                 
+        30             5       1630                                                                 
+        20             5       2175                                                                 
+        10             3 2916.66667                                                                 
+
+SQL> select sal from emp group by sal having count(sal)>1;
+
+       SAL                                                                                          
+----------                                                                                          
+      1250                                                                                          
+      3000                                                                                          
+
+SQL> select ename from emp group by ename having count(ename)>1;
+
+no rows selected
+
+SQL> select deptno, avg(sal) from emp group by deptno having(avg(sal)) between 2000 and 3000;
+
+    DEPTNO   AVG(SAL)                                                                               
+---------- ----------                                                                               
+        20       2175                                                                               
+        10 2916.66667                                                                               
+
+SQL> select count(ename) from emp where job='MANAGER' OR 'ANALYST' GROUP BY DEPTNO HAVING (AVG(SAL))LIKE '%0';
+select count(ename) from emp where job='MANAGER' OR 'ANALYST' GROUP BY DEPTNO HAVING (AVG(SAL))LIKE '%0'
+                                                              *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select count(ename) from emp where job='MANAGER' OR JOB='ANALYST'  GROUP BY DEPTNO HAVING (AVG(SAL))LIKE '%0'
+SQL> /
+
+COUNT(ENAME)                                                                                        
+------------                                                                                        
+           1                                                                                        
+           1                                                                                        
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select count(ename),DEPTNO from emp where job='MANAGER' OR JOB='ANALYST'  GROUP BY DEPTNO HAVING (AVG(SAL))LIKE '%0'
+SQL> /
+
+COUNT(ENAME)     DEPTNO                                                                             
+------------ ----------                                                                             
+           1         30                                                                             
+           1         10                                                                             
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST'  GROUP BY DEPTNO HAVING SAL*12 LIKE '%0'
+SQL> /
+select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST'  GROUP BY DEPTNO HAVING SAL*12 LIKE '%0'
+                                                                                          *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST'   DEPTNO HAVING SAL*12 LIKE '%0'
+SQL> /
+select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST'   DEPTNO HAVING SAL*12 LIKE '%0'
+                                                                    *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST' HAVING SAL*12 LIKE '%0'
+SQL> /
+select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST' HAVING SAL*12 LIKE '%0'
+                                                                         *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST' WHERE SAL*12 LIKE '%0'
+SQL> /
+select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST' WHERE SAL*12 LIKE '%0'
+                                                                  *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* select ename,DEPTNO from emp where job='MANAGER' OR JOB='ANALYST' AND SAL*12 LIKE '%0'
+SQL> /
+
+ENAME          DEPTNO                                                                               
+---------- ----------                                                                               
+JONES              20                                                                               
+BLAKE              30                                                                               
+CLARK              10                                                                               
+SCOTT              20                                                                               
+FORD               20                                                                               
+
+SQL> SELECT MAX(SAL) FROM EMP HAVING SAL=MAX(SAL);
+SELECT MAX(SAL) FROM EMP HAVING SAL=MAX(SAL)
+                                *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT 1 FROM DUAL HAVING 1=1;
+
+         1                                                                                          
+----------                                                                                          
+         1                                                                                          
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC='NEW YORK);
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC='NEW YORK')
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+CLARK                                                                                               
+KING                                                                                                
+MILLER                                                                                              
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC='NEW YORK')
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+CLARK                                                                                               
+KING                                                                                                
+MILLER                                                                                              
+
+SQL> SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT';
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        20                                                                                          
+
+SQL> /
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        20                                                                                          
+
+SQL> RUN
+  1* SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        20                                                                                          
+
+SQL> ;
+  1* SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT')
+SQL> ;
+  1* SELECT * FROM  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT')
+SQL> /
+SELECT * FROM  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT')
+               *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM EMP WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT')
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM EMP WHERE DEPTNO=SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'
+SQL> /
+SELECT * FROM EMP WHERE DEPTNO=SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT'
+                               *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM EMP WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT')
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT MGR FROM EMP WHERE ENAME='JOHES
+SQL> /
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT MGR FROM EMP WHERE ENAME='JOHES'
+SQL> /
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT MGR FROM EMP WHERE ENAME='JONES'
+SQL> /
+
+       MGR                                                                                          
+----------                                                                                          
+      7839                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE EMPNO=(SELECT MGR FROM EMP WHERE ENAME='JONES')
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+KING                                                                                                
+
+SQL> SHOW DATABASES;
+SP2-0158: unknown SHOW option "DATABASES"
+SQL> SHOW DB;
+SP2-0158: unknown SHOW option "DB"
+SQL> SHOW DATABASE;
+SP2-0158: unknown SHOW option "DATABASE"
+SQL> SELECT * FOM DEPT;
+SELECT * FOM DEPT
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM DEPT
+SQL> /
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> SELECT * FROM EMP WHERE DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME LIKE '%S');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+
+6 rows selected.
+
+SQL> SELECT ENAME FROM EMP WHERE ED
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE  DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING') AND SAL=MAX(SAL)
+  2  /
+SELECT ENAME FROM EMP WHERE  DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING') AND SAL=MAX(SAL)
+                                                                                                 *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE SAL=MAX(SAL) AND  DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING')
+SQL> /
+SELECT ENAME FROM EMP WHERE SAL=MAX(SAL) AND  DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING')
+                                *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP HAVING SAL=MAX(SAL) AND  DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING')
+SQL> /
+SELECT ENAME FROM EMP HAVING SAL=MAX(SAL) AND  DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING')
+                                               *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE SAL IN (SELECT MAX(SAL) FROM EMP WHERE   DEPTNO IN( SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING'))
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+KING                                                                                                
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DNAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE   COMM IN( SELECT MAX(COMM) ))
+SQL> /
+SELECT DNAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE   COMM IN( SELECT MAX(COMM) ))
+                                                                                                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DNAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE   COMM IN( SELECT MAX(COMM) FROM EMP ))
+SQL> /
+SELECT DNAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE   COMM IN( SELECT MAX(COMM) FROM EMP ))
+       *
+ERROR at line 1:
+ORA-00904: "DNAME": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DNAME FROM DEPT WHERE DEPTNO IN (SELECT DEPTNO FROM EMP WHERE   COMM IN( SELECT MAX(COMM) FROM EMP ))
+SQL> /
+
+DNAME                                                                                               
+--------------                                                                                      
+SALES                                                                                               
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE   DNAME LIKE '_O%')
+SQL> /
+
+no rows selected
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE   DNAME LIKE '_O%')
+SQL> SELECT DEPTNO FROM DEPT WHERE   DNAME LIKE '_O%';
+
+no rows selected
+
+SQL> SELECT DNAME FROM DEPT;
+
+DNAME                                                                                               
+--------------                                                                                      
+ACCOUNTING                                                                                          
+RESEARCH                                                                                            
+SALES                                                                                               
+OPERATIONS                                                                                          
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE DEPTNO IN(SELECT DEPTNO FROM EMP WHERE ENAME='SCOTT')
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+FORD                                                                                                
+ADAMS                                                                                               
+SCOTT                                                                                               
+JONES                                                                                               
+SMITH                                                                                               
+
+SQL> SELECT ENAME FOM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING',OPERA;
+SELECT ENAME FOM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING',OPERA
+                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING','OPERATIONS')
+SQL> /
+SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING','OPERATIONS')
+                                                                                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT ENAME FROM EMP WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE DNAME IN('ACCOUNTING','OPERATIONS'))
+SQL> /
+
+ENAME                                                                                               
+----------                                                                                          
+CLARK                                                                                               
+KING                                                                                                
+MILLER                                                                                              
+
+SQL> SELECT ENAME FROM EMP WHERE SAL>(SELECT SAL FROM EMP WHERE ENAME='MILLER');
+
+ENAME                                                                                               
+----------                                                                                          
+ALLEN                                                                                               
+JONES                                                                                               
+BLAKE                                                                                               
+CLARK                                                                                               
+SCOTT                                                                                               
+KING                                                                                                
+TURNER                                                                                              
+FORD                                                                                                
+
+8 rows selected.
+
+SQL> SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP WHERE J0B='SALESMAN' AND COUNT(;
+SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP WHERE J0B='SALESMAN' AND COUNT(
+                                                                                       *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP GROUP BY JOB HAVING COUNT('SALESMAN'))
+SQL> /
+SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP GROUP BY JOB HAVING COUNT('SALESMAN'))
+                                                                                                   *
+ERROR at line 1:
+ORA-00920: invalid relational operator 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP  JOB WHERE COUNT('SALESMAN')>3)
+SQL> /
+SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP  JOB WHERE COUNT('SALESMAN')>3)
+                                                                         *
+ERROR at line 1:
+ORA-00934: group function is not allowed here 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT DNAME FROM DEPT WHERE DEPTNO IN(SELECT DEPTNO FROM EMP  JOB WHERE COUNT('SALESMAN')>3)
+SQL> SELECT * FROM EMP;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO               
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------               
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20               
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30               
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30               
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20               
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30               
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30               
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10               
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20               
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10               
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30               
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20               
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30               
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20               
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10               
+
+14 rows selected.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                       
+---------- -------------- -------------                                                             
+        10 ACCOUNTING     NEW YORK                                                                  
+        20 RESEARCH       DALLAS                                                                    
+        30 SALES          CHICAGO                                                                   
+        40 OPERATIONS     BOSTON                                                                    
+
+SQL> SELECT COUNT('SALESMAN') FROM EMP;
+
+COUNT('SALESMAN')                                                                                   
+-----------------                                                                                   
+               14                                                                                   
+
+SQL> SELECT DEPTNO FROM EMP WHERE JOB ='SALESMAN' ;
+
+    DEPTNO                                                                                          
+----------                                                                                          
+        30                                                                                          
+        30                                                                                          

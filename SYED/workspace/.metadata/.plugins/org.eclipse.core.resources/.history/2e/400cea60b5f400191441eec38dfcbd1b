@@ -1,0 +1,9 @@
+package object;
+
+public class Student {
+
+	String name ;
+	int id;
+	double percentage;
+	
+}

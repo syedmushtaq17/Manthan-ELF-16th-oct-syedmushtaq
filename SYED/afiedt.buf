@@ -1,0 +1,2 @@
+select sal from emp order by sal desc FETCH FIRST 5 ROWS only
+/

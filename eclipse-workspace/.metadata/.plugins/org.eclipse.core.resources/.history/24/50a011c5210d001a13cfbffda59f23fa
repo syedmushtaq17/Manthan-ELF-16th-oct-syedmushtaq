@@ -1,0 +1,11 @@
+package manthan.assessment.Implementation;
+
+import manthan.assessment.bean.Bean;
+
+public interface Dao {
+	
+	public boolean addMe(Bean b);
+	public boolean logIn(int uid, String password );
+	
+
+}
